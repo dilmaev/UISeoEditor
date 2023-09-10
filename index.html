@@ -1,0 +1,217 @@
+<div class="jquery-right-menu unselectable">
+    <div class="header">Pages<div id="hide_menu">–</div>
+    </div>
+    <div class="jquery-menu">
+        <div class="add_page" id="add_page">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                <path
+                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+            </svg> СОЗДАТЬ
+        </div>
+        <div class="pages_list">
+            <div class="pages_list_item">
+                <a href="/pages/moskva.html">Moskva</a>
+                <a href="/pages/grozny.html">Grozny</a>
+                <a href="/pages/sochi.html">Sochi</a>
+                <a href="/pages/saint-petersburg.html">Saint Petersburg</a>
+                <a href="/pages/kazan.html">Kazan</a>
+                <a href="/pages/novosibirsk.html">Novosibirsk</a>
+                <a href="/pages/ekaterinburg.html">Ekaterinburg</a>
+                <a href="/pages/samara.html">Samara</a>
+                <a href="/pages/omsk.html">Omsk</a>
+                <a href="/pages/rostov.html">Rostov</a>
+                <a href="/pages/ufa.html">Ufa</a>
+                <a href="/pages/khabarovsk.html">Khabarovsk</a>
+                <a href="/pages/vladivostok.html">Vladivostok</a>
+                <a href="/pages/perm.html">Perm</a>
+                <a href="/pages/volgograd.html">Volgograd</a>
+                <a href="/pages/chelyabinsk.html">Chelyabinsk</a>
+                <a href="/pages/kaliningrad.html">Kaliningrad</a>
+                <a href="/pages/tyumen.html">Tyumen</a>
+                <a href="/pages/yaroslavl.html">Yaroslavl</a>
+                <a href="/pages/irkutsk.html">Irkutsk</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="jquery-center-menu unselectable">
+    <div class="header">Page creation<div id="hide_menu">–</div>
+    </div>
+    <div class="jquery-menu">
+        <div class="flex-container">
+            <div class="selected_checkboxes"></div>
+            <div class="cities_list">
+                <textarea placeholder="Список городов..." name="cities"></textarea>
+                <button>ОТПРАВИТЬ</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    :root {
+        --center-menu-width: 800px;
+        --center-menu-height: 500px;
+    }
+
+    .jquery-menu.active {
+        display: none;
+    }
+
+    #hide_menu {
+        float: right;
+        cursor: pointer;
+        padding-right: 5px;
+    }
+
+    .add_page {
+        background: #fff;
+        padding: 4px;
+        padding-top: 5px;
+        text-align: center;
+        cursor: pointer;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .add_page svg {
+        vertical-align: bottom;
+    }
+
+    .add_page:hover svg path {
+        fill: red;
+    }
+
+    .pages_list {
+        height: calc(var(--center-menu-height) - 55px);
+    }
+
+    .pages_list_item a {
+        display: block;
+        text-decoration: none;
+        color: #000;
+        font-weight: 600;
+        letter-spacing: 1px;
+        padding: 3px;
+    }
+
+    .pages_list_item a::before {
+        content: "➝ ";
+        display: inline;
+    }
+
+    .pages_list_item a:hover {
+        background: #ccc;
+    }
+
+    .pages_list {
+        background: #fff;
+        font-weight: 600;
+        font-size: 13px;
+        text-align: left;
+        color: #000;
+        overflow-y: auto;
+    }
+
+    .header {
+        background: #666;
+        padding: 2px;
+        font-weight: 600;
+        text-align: center;
+        color: #fff;
+        cursor: move;
+    }
+
+    .jquery-right-menu,
+    .jquery-center-menu {
+        background-color: #fff;
+        display: none;
+        border: 1px solid #ccc;
+        padding: 1px;
+        position: fixed;
+        font-size: 14px; 
+        z-index: 99999;
+        font-family: sans-serif;
+    }
+
+    .jquery-right-menu {
+        width: 250px;
+        top: 5px;
+        right: 5px;
+    }
+
+    .jquery-center-menu {
+        min-width: var(--center-menu-width);
+        max-width: var(--center-menu-width);
+        top: 5px;
+        right: 260px;
+    }
+
+    .jquery-right-menu.active,
+    .jquery-center-menu.active {
+        display: block;
+    }
+ 
+    .custom-checkbox {
+        margin-right: 5px;
+    }
+
+    .unselectable {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+
+    .selected_items {
+        padding-left: 5px;
+        overflow-y: auto;
+    }
+
+    .flex-container {
+        display: flex; 
+    }
+
+    
+    .selected_checkboxes,
+    .cities_list {
+        border: 1px solid #ccc;
+        margin: 5px;
+        
+    }
+    .selected_checkboxes {
+        width: 70%; 
+    }
+    .cities_list {
+        width: 30%; 
+    }
+
+    .cities_list textarea {
+        width: 100%;
+        height: calc(var(--center-menu-height) - 65px);
+        border: none;
+        resize: none;
+        padding: 5px;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
+    button {
+        font-weight: bold;
+        width: 100%;
+        padding: 5px;
+        border: none;
+        background: #666;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .truncate {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: var(--center-menu-width);
+    }
+</style>

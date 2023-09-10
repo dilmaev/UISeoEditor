@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Ali JS",
+  "version": "1.0",
+  "host_permissions": [
+    "https://templates.jquery.link/*"
+  ],
+  "permissions": [
+    "tabs"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://templates.jquery.link/*"
+      ],
+      "js": [
+        "index.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["index.html"],
+      "matches": ["https://templates.jquery.link/*"]
+    }
+  ]
+}
