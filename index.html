@@ -1,5 +1,6 @@
 <div class="jquery-right-menu unselectable">
-    <div class="header">Pages<div id="hide_menu">–</div>
+    <div class="header">
+        Pages<div id="hide_menu">–</div>
     </div>
     <div class="jquery-menu">
         <div class="add_page" id="add_page">
@@ -35,26 +36,34 @@
         </div>
     </div>
 </div>
-
-
 <div class="jquery-center-menu unselectable">
-    <div class="header">Page creation<div id="hide_menu">–</div>
+    <div class="header">
+        Page creation<div id="hide_menu">–</div>
     </div>
     <div class="jquery-menu">
         <div class="flex-container">
             <div class="selected_checkboxes"></div>
             <div class="cities_list">
                 <textarea placeholder="Список городов..." name="cities"></textarea>
-                <button>ОТПРАВИТЬ</button>
+                <button id="createPages">ОТПРАВИТЬ</button>
             </div>
         </div>
     </div>
 </div>
 
+<div class="jquery-logs-menu">
+    <div class="header">
+        Logs<div id="hide_menu">–</div>
+    </div>
+    <div class="jquery-menu">
+        <div class="logs-list"><textarea placeholder="Логи" readonly></textarea></div>
+    </div>
+</div>
+
 <style>
     :root {
-        --center-menu-width: 800px;
-        --center-menu-height: 500px;
+        --center-menu-width: 600px;
+        --center-menu-height: 300px;
     }
 
     .jquery-menu.active {
@@ -76,6 +85,10 @@
         border-bottom: 1px solid #ccc;
     }
 
+    .add_page:hover {
+        color: red
+    }
+
     .add_page svg {
         vertical-align: bottom;
     }
@@ -85,7 +98,7 @@
     }
 
     .pages_list {
-        height: calc(var(--center-menu-height) - 55px);
+        height: calc(var(--center-menu-height) - 51px);
     }
 
     .pages_list_item a {
@@ -115,6 +128,16 @@
         overflow-y: auto;
     }
 
+    .logs-list {
+        height: var(--center-menu-height)
+    }
+
+    .logs-list textarea {
+        width: 100%;
+        height: 100%;
+        padding: 5px;
+    }
+
     .header {
         background: #666;
         padding: 2px;
@@ -125,20 +148,27 @@
     }
 
     .jquery-right-menu,
+    .jquery-logs-menu,
     .jquery-center-menu {
         background-color: #fff;
         display: none;
         border: 1px solid #ccc;
         padding: 1px;
         position: fixed;
-        font-size: 14px; 
+        font-size: 14px;
         z-index: 99999;
         font-family: sans-serif;
     }
 
     .jquery-right-menu {
-        width: 250px;
+        width: 200px;
         top: 5px;
+        right: 5px;
+    }
+
+    .jquery-logs-menu {
+        width: 805px;
+        top: calc(var(--center-menu-height) + 10px);
         right: 5px;
     }
 
@@ -146,25 +176,18 @@
         min-width: var(--center-menu-width);
         max-width: var(--center-menu-width);
         top: 5px;
-        right: 260px;
+        right: 210px;
     }
 
     .jquery-right-menu.active,
+    .jquery-logs-menu.active,
     .jquery-center-menu.active {
         display: block;
     }
- 
+
     .custom-checkbox {
         margin-right: 5px;
     }
-
-    .unselectable {
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-    }
-
 
     .selected_items {
         padding-left: 5px;
@@ -172,21 +195,25 @@
     }
 
     .flex-container {
-        display: flex; 
+        display: flex;
     }
 
-    
+
     .selected_checkboxes,
     .cities_list {
         border: 1px solid #ccc;
         margin: 5px;
-        
+
     }
+
     .selected_checkboxes {
-        width: 70%; 
+        width: 70%;
+        overflow-y: auto;
+        max-height: calc(var(--center-menu-height) - 35px)
     }
+
     .cities_list {
-        width: 30%; 
+        width: 30%;
     }
 
     .cities_list textarea {
@@ -198,6 +225,7 @@
         font-size: 14px;
         box-sizing: border-box;
     }
+
     button {
         font-weight: bold;
         width: 100%;
@@ -208,10 +236,21 @@
         cursor: pointer;
     }
 
+    button:hover {
+        background: #777;
+    }
+
     .truncate {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: var(--center-menu-width);
+        max-width: calc(var(--center-menu-width) - 200px);
+    }
+
+    .unselectable {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
     }
 </style>

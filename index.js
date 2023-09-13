@@ -13,25 +13,15 @@ xhr.send();
 
 
 // при нажатии на кнопку добавить страницу
-document.addEventListener("click", function (e) {
-    const closestAddPage = e.target.closest('#add_page');
-    if (closestAddPage) {
+document.addEventListener("click", function (e) { 
+    if (e.target.closest('#add_page')) {
         const menu = document.querySelector('.jquery-center-menu');
-        menu.classList.toggle('active');
+        menu.classList.toggle('active'); 
+    }
 
-        // if (menu.classList.contains('active')) {
-        //     // выводим выбранные чекбоксы в class selected_checkboxes
-        //     const checkboxes = document.querySelectorAll('.custom-checkbox');
-        //     checkboxes.forEach(function (checkbox) {
-        //         if (checkbox.checked) {
-        //             const selectedCheckboxes = document.querySelector('.selected_checkboxes');
-        //             selectedCheckboxes.insertAdjacentHTML('beforeend', checkbox.parentNode.outerHTML);
-        //         }
-        //     });
-        // } else {
-        //     document.querySelector('.selected_checkboxes').innerHTML = '';
-        // }
-
+    if (e.target.closest('#createPages')) {
+        const menu = document.querySelector('.jquery-logs-menu');
+        menu.classList.toggle('active'); 
     }
 });
 
@@ -113,6 +103,8 @@ document.addEventListener("click", function (e) {
         // Ищем следующий элемент на том же уровне
         const menu = parentDiv ? parentDiv.nextElementSibling : null;
 
+        console.log(menu)
+
         if (menu) {
             menu.classList.toggle('active');
         }
@@ -127,7 +119,7 @@ let offsetY = 0;
 
 document.addEventListener('mousedown', (e) => {
     if (e.target.classList.contains('header')) {
-        draggedElement = e.target.closest('.jquery-right-menu, .jquery-center-menu');
+        draggedElement = e.target.closest('.jquery-right-menu, .jquery-center-menu, .jquery-logs-menu');
         const rect = draggedElement.getBoundingClientRect();
         offsetX = e.clientX - rect.left;
         offsetY = e.clientY - rect.top;
